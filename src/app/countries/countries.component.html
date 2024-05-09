@@ -1,0 +1,10 @@
+<app-navbar-home></app-navbar-home>
+
+<div class="countries-container">
+    <div *ngFor="let country of countries" class="country-card">
+      <img [src]="country.imageUrl" alt="{{ country.name }}">
+      <p>{{ country.name }}</p>
+      <button (click)="goToDetails(country)">Detaljno</button>
+    </div>
+  </div>
+  

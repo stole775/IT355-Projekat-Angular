@@ -1,0 +1,35 @@
+.intro-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .intro-section h1 {
+    color: #0056b3;
+    margin-bottom: 15px;
+  }
+  
+  .intro-section p {
+    color: #333;
+    line-height: 1.6;
+  }
+  
+
+  @media (max-width: 768px) {
+    .mapa {
+      flex-direction: column;
+      align-items: flex-start; /* Poravnava sadržaj sa leve strane */
+      margin-bottom: 20px;
+      align-self: flex-end; /* Poravnava mapu sa desne strane */
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      width: 100%; /* Mapa zauzima punu širinu .footer-map diva */
+      height: 300px;
+
+    }
+  }
+  

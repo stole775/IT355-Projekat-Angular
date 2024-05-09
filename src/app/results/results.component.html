@@ -1,0 +1,32 @@
+<div class="search-results">
+    <div *ngIf="results.cities.length > 0">
+      <h3>Gradovi</h3>
+      <ul>
+        <li *ngFor="let city of results.cities">
+          <!-- Update the routerLink to match your routing setup -->
+          <a [routerLink]="['/smestaji']" [queryParams]="{ id: city.id }">{{ city.name }}</a>
+        </li>
+      </ul>
+    </div>
+    
+    <div *ngIf="results.countries.length > 0">
+      <h3>Države</h3>
+      <ul>
+        <li *ngFor="let country of results.countries">
+          <!-- Update the routerLink to match your routing setup --> 
+          <a [routerLink]="['/drzava']" [queryParams]="{ id: country.id }">{{ country.name }}</a>
+
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="results.accommodations.length > 0">
+      <h3>Smeštaji</h3>
+      <ul>
+        <li *ngFor="let accommodation of results.accommodations">
+          <!-- Update the routerLink to match your routing setup -->
+          <a [routerLink]="['/smestaj', accommodation.id]">{{ accommodation.name }}</a>
+        </li>
+      </ul>
+    </div>
+</div>

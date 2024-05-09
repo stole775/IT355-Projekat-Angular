@@ -1,0 +1,29 @@
+<app-navbar-home></app-navbar-home>
+
+<form #cityForm="ngForm" (ngSubmit)="submitCity()" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="name">Naziv grada:</label>
+    <input type="text" id="name" [(ngModel)]="newCity.name" name="name" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="country">Država:</label>
+    <select id="country" [(ngModel)]="newCity.countryId" name="country" class="form-control" required>
+      <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Opis grada:</label>
+    <textarea id="description" [(ngModel)]="newCity.description" name="description" class="form-control" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="image">Slika grada:</label>
+    <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!cityForm.valid">Dodaj grad</button>
+</form>
+
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>

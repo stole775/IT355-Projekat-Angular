@@ -1,0 +1,7 @@
+<div class="gallery">
+    <a *ngIf="images.length" [routerLink]="images[currentImageIndex].href">
+      <img [src]="images[currentImageIndex].src" [alt]="images[currentImageIndex].href">
+    </a>
+    
+  </div>
+  

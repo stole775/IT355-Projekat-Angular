@@ -1,0 +1,79 @@
+.navbar  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:   #0f2129 ; /* Prilagodite boje */
+    padding: 10px;
+    color: rgb(70, 44, 27); /* Prilagodite boju teksta */
+    margin-bottom: 15px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+     height: 60px; /* Primjer visine navigacionog bara */
+  padding: 0 20px; /* Dodajte padding po potrebi */
+  background-color: #333; 
+  }
+  .navbar-logo img {
+    height: 100%; /* Postavlja visinu slike da odgovara visini navigacionog bara */
+    width: auto; /* Održava aspekt ratio slike */
+  }
+
+
+  .logo-container img {
+    width: 80px; /* Prilagodite veličinu logotipa */
+  }
+  
+  .nav-links ,a,p{
+    margin-top: 3px;
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    padding: 0 5px;
+  }
+  
+  .nav-links li a ,.nav-links li p{
+    text-decoration: none;
+    color: rgb(255, 255, 255); /* Prilagodite boju teksta */
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:   #1d3642be ; 
+    width: 60px;
+    padding: 10px;
+   
+  }
+
+
+  .dropdown-content {
+    display: none;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
+
+
+  /* Postojeći stilovi */
+
+.dropdown-content a{
+    margin-top: 10px;
+  }
+  
+  .dropdown-content.show {
+    display: block; /* Prikazuje dropdown sadržaj kada je aktiviran */
+  }
+ .logo{
+    width: 200px;
+ }
+
+  /* navbar-home.component.css */
+@media (min-width: 968px) {
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  }
+  

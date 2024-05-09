@@ -1,0 +1,35 @@
+.search-results {
+    margin: 20px;
+}
+  
+.search-results h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+  
+.search-results ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+.search-results li {
+    background-color: #f9f9f9;
+    margin-bottom: 8px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-results li:hover {
+    background-color: #efefef;
+}
+
+.search-results li a {
+    color: #007bff; /* Boja linka */
+    text-decoration: none; /* Uklanja podvučenost */
+}
+
+.search-results li a:hover {
+    text-decoration: underline; /* Dodaje podvučenost na hover */
+}

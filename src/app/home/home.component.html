@@ -1,0 +1,19 @@
+<app-navbar-home></app-navbar-home> 
+<app-search-bar (onSearch)="searchResultsComponent.search($event)"></app-search-bar>
+<app-results #searchResultsComponent></app-results>
+
+<app-home-gallery></app-home-gallery>
+
+<div class="intro-section">
+    <h1>Dobrodošli u 016Travel Putovanja</h1>
+    <p>
+      ABC Putovanja je vodeća turistička agencija specijalizovana za nezaboravna putovanja i avanture širom sveta. Sa više od 20 godina iskustva, naš cilj je da vam pružimo putovanja koja nadmašuju očekivanja, sa pažljivo odabranim destinacijama, smeštajem i iskustvima dizajniranim da obogate vaš život i kreiraju trajne uspomene.
+    </p>
+    <p>
+      Bilo da tražite opuštajući odmor na plaži, avanturu u divljini ili kulturno istraživanje gradova bogatih istorijom, ABC Putovanja je tu da vam pomogne da otkrijete savršeno putovanje. Pridružite se našoj porodici zadovoljnih putnika i započnite svoju avanturu danas!
+    </p>
+  </div>
+  <app-featured-offers-component></app-featured-offers-component>
+  
+  <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46689.271033929406!2d21.907102487523435!3d42.99766178772127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475582b263712f39%3A0xd1b3351095c80638!2sLeskovac!5e0!3m2!1sen!2srs!4v1709509001267!5m2!1sen!2srs" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <app-footer></app-footer>

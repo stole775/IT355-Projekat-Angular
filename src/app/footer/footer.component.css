@@ -1,0 +1,37 @@
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 2px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .footer-text {
+    font-size: 0.8rem;
+  }
+  
+  .footer-map iframe {
+    width: 400px; /* Prilagodite širinu mape */
+    height: 250px; /* Prilagodite visinu mape */
+  }
+  
+  @media (max-width: 428px) {
+    .site-footer {
+      flex-direction: column;
+    }
+    
+    .footer-map iframe {
+       
+       
+      height: 200px;
+    }
+  }
+  

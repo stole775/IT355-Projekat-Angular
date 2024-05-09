@@ -1,0 +1,18 @@
+<app-navbar-home></app-navbar-home>
+
+    <div *ngIf="isAdmin" class="city-card">
+       <button (click)="addCity()">Dodaj grad</button>
+    </div>
+  <div class="countries-container">
+  <div *ngFor="let city of cities" class="city-card">
+    
+    <img [src]="'http://localhost:8080/api/city/images/'+city.slikaGradaURL" alt="{{ city.name }}">
+    <p>{{ city.name }}</p>
+    <p>{{ city.opisGrada }}</p>
+    <button (click)="goToDetails(city.id)">Detaljno</button>
+    <!-- Admin controls -->
+    <div *ngIf="isAdmin">
+      <button *ngIf="!city.hasAccommodations" (click)="deleteCity(city.id,city.name)">Obriši grad</button>
+    </div>
+  </div>
+</div>

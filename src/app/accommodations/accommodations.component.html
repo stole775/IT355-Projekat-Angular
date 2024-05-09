@@ -1,0 +1,33 @@
+<app-navbar-home></app-navbar-home>
+
+<div class="city-container">
+    <div *ngIf="city" class="city-container">
+  <div class="city-card"> 
+    <img [src]="'http://localhost:8080/api/city/images/'+city.slikaGradaURL" alt="{{ city.name }}">
+    <h2>{{ city.name }}</h2>
+    <p>{{ city.opisGrada }}</p> 
+  </div
+  ><button (click)="dodajSmestaj(city.id)" class="smestaj-card">Dodaj smestaj</button>
+</div>
+
+    </div>
+    
+    <div class="countries-container">
+      <div *ngFor="let smestaj of accommodations" class="smestaj-card"> 
+        <img [src]="'http://localhost:8080/api/city/images/'+smestaj.imageUrl" alt="{{ smestaj.name }}">
+        <p>{{ smestaj.name }}</p>
+        <p *ngIf="smestaj.description">{{ smestaj.description }}</p>
+        <p *ngIf="smestaj.priceFrom">Cena od: {{ smestaj.priceFrom }}€</p>
+        <p *ngIf="smestaj.numberOfNights">Broj noći: {{ smestaj.numberOfNights }}</p>
+        <p *ngIf="smestaj.available">Dostupnost: {{ smestaj.available ? 'Dostupno' : 'Nije dostupno' }}</p>
+        <p *ngIf="smestaj.notIncluded">Nije uključeno: {{ smestaj.notIncluded }}</p>
+        <button (click)="goToDetails(smestaj.id)">Detaljno</button>
+        <!-- Admin Controls -->
+        <div *ngIf="isAdmin">
+            <button (click)="editAccommodation(smestaj.id)">Uredi</button>
+            <button (click)="deleteAccommodation(smestaj.id,smestaj.name)">Obriši</button>
+            <button (click)="openImageUpload(smestaj.id)">Dodaj slike</button>
+        </div>
+    </div>
+    
+  </div>
