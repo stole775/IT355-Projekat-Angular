@@ -4,6 +4,7 @@
     background-color: #f0f0f0;
     padding: 8px;
     border-radius: 20px;
+    border-color: black;
     width: 98%;
     max-width: 500px; /* Adjust based on your preference */
     margin: 20px auto; /* Center the search bar in the container */

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; 
+import { SveMetodeService } from '../Service/sveMetode/sve-metode.service';
+import { AuthService } from '../Service/authServie/auth.service';
 
 @Component({
   selector: 'app-countries',
@@ -10,20 +11,30 @@ import { Router } from '@angular/router';
 export class CountriesComponent implements OnInit {
   countries: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {} // Dodajte router ovde
-
+  constructor(
+    private countryService: SveMetodeService,
+     private router: Router,
+     private authService: AuthService) {}
 
   ngOnInit() {
-    this.http.get<{name: string, image_url: string}[]>('http://localhost:8080/api/country').subscribe(data => {
-      this.countries = data;
+    this.isAdmin();
+    this.countryService.getCountries().subscribe({
+      next: (data) => {
+        this.countries = data;
+      },
+      error: (error) => {
+        console.error('Error fetching countries:', error);
+      }
     });
+  }
+  isAdmin(){
+    return this.authService.isLoggedIn();
   }
   
   goToDetails(country: {name: string, image_url: string}) {
-    // Implementirajte navigaciju. Na primer:
-     this.router.navigate(['/country-details', country.name]);
+    this.router.navigate(['/country-details', country.name]);
   }
-  
-
-
+  vratiSlike(filename: string): string {
+    return this.countryService.getImage(filename);
+  }
 }

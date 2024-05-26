@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core'; 
+import { AuthService } from '../Service/authServie/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,16 +9,12 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginData = { username: '', password: '' };
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   onSubmit(): void {
-    this.http.post<{ token: string }>('http://localhost:8080/auth/login', this.loginData).subscribe({
+    this.authService.login(this.loginData.username, this.loginData.password).subscribe({
       next: (response) => {
-        console.log('Login successful:', response);
-        // Save the JWT token to local storage
-        localStorage.setItem('jwtToken', response.token);
-        // Navigate to the admin panel or somewhere else after login
-        this.router.navigate(['/']);
+        this.authService.handleAuthentication(response.jwt);
       },
       error: (error) => {
         console.error('Login failed:', error);

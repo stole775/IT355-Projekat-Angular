@@ -1,6 +1,6 @@
 <app-navbar-home></app-navbar-home>
 
-<form #cityForm="ngForm" (ngSubmit)="submitCity()" enctype="multipart/form-data">
+<form #cityForm="ngForm" (ngSubmit)="submitCity()" enctype="multipart/form-data" novalidate>
   <div class="form-group">
     <label for="name">Naziv grada:</label>
     <input type="text" id="name" [(ngModel)]="newCity.name" name="name" class="form-control" required>
@@ -21,9 +21,11 @@
   <div class="form-group">
     <label for="image">Slika grada:</label>
     <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*" class="form-control">
+    <!-- Display existing image if available -->
+    <img *ngIf="newCity.slikaGradaURL" [src]="vratiSlike(newCity.slikaGradaURL)" alt="Current City Image" class="img-fluid">
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!cityForm.valid">Dodaj grad</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!cityForm.valid">{{ cityId ? 'Ažuriraj grad' : 'Dodaj grad' }}</button>
 </form>
 
-<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>

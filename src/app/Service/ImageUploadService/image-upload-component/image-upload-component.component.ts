@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ImageUploadService } from '../image-upload-service.service';
 import { Router } from '@angular/router';
 import { environment } from 'environment/environment';
+import { AuthService } from 'src/app/Service/authServie/auth.service';
 
 @Component({
   selector: 'app-image-upload',
@@ -19,7 +20,8 @@ export class ImageUploadComponent implements OnInit {
     private imageUploadService: ImageUploadService,
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth:AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,9 @@ export class ImageUploadComponent implements OnInit {
         this.accommodationId = params['accommodationId'];
       }
     });
+    if(!this.auth.isLoggedIn()){
+      this.router.navigate(["/home"]);
+    }
   }
 
   onFileSelected(event: Event): void {

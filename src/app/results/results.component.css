@@ -1,10 +1,13 @@
 .search-results {
     margin: 20px;
+    width: fit-content;
+    min-width: 50%;
+    
 }
   
 .search-results h3 {
     color: #333;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 10px;
 }
   
@@ -26,7 +29,7 @@
 }
 
 .search-results li a {
-    color: #007bff; /* Boja linka */
+    color: #0367d3; /* Boja linka */
     text-decoration: none; /* Uklanja podvučenost */
 }
 

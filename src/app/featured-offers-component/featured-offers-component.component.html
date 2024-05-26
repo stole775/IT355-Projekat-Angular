@@ -1,14 +1,13 @@
 <div class="featured-offers">
-    <h2>Istaknuti Oglasi</h2>
-    <div class="offers-container">
-      <div *ngFor="let offer of featuredOffers" class="offer-card">
-        <img [src]="offer.imageUrl" alt="Offer image">
-        <div class="offer-info">
-          <h3>{{ offer.title }}</h3>
-          <p>{{ offer.description }}</p>
-          <button (click)="goToDetails(offer.id)">Detaljno</button>
-        </div>
+  <h2 style="margin-left: 2%;">Istaknuti Oglasi</h2>
+  <div class="offers-container">
+    <div *ngFor="let offer of featuredOffers" class="offer-card"> 
+      <img [src]="vratiSlike(offer.imageUrl)" alt="{{ offer.name }}">
+      <div class="offer-info">
+        <h3>{{ offer.title }}</h3>
+        <p>{{ offer.description }}</p>
+        <button (click)="goToDetails(offer.id)">Detaljno</button>
       </div>
     </div>
   </div>
-  
+</div>

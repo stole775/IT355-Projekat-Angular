@@ -1,109 +1,136 @@
 .countries-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: #e6f2ff;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap between cards as needed */
-  }
-  
-  .smestaj-card {
-    flex: 1 1 300px; /* Adjust the base size of the card as needed */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  
-  .smestaj-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-  
-  .smestaj-card p {
-    color: #333;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .smestaj-card button {
-    background-color: #0056b3;
-    background: linear-gradient(88.31deg, #2179d8 13.82%, #4a9df7 86.7%);
-    box-shadow: 0 4px 8px rgba(255, 0, 0, .18);
-    color: #fff;
-    padding: 10px 20px;
-    text-transform: capitalize;
-    font-family: Poppins;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 25px;
-    letter-spacing: .75px;
-    text-align: center;
-    border-radius: 28px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .smestaj-card button:hover {
-    background-color: #1f75d6;
-  }
-  
-  .smestaj-card button:active {
-    background-color: #1e3147;
-  }
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #e6f2ff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-  
+.smestaj-card {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
 
+.smestaj-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
 
+.smestaj-card p {
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
 
+.smestaj-card button {
+  background-color: #0056b3;
+  background: linear-gradient(88.31deg, #2179d8 13.82%, #4a9df7 86.7%);
+  box-shadow: 0 4px 8px rgba(255, 0, 0, .18);
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: capitalize;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: .75px;
+  text-align: center;
+  border-radius: 28px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+.dodajbutton{
+  background-color: #0056b3;
+  background: linear-gradient(88.31deg, #2179d8 13.82%, #4a9df7 86.7%);
+  box-shadow: 0 4px 8px rgba(255, 0, 0, .18);
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: capitalize;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: .75px;
+  text-align: center;
+  border-radius: 28px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;  
+}
+.dodaj{
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Max širina trake */
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff; 
+  left: 28%;
+}
 
-  .city-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px;
+.smestaj-card button:hover {
+  background-color: #1f75d6;
+}
+
+.smestaj-card button:active {
+  background-color: #1e3147;
+}
+
+.city-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
 }
 
 .city-card {
-    position: relative;
-    width: 100%; /* Širina trake */
-    height: 250px; /* Visina trake */
-    overflow: hidden;
-    border-radius: 8px;
-    margin-bottom: 10px; /* Dodajte prostor ispod trake za opis */
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Max širina trake */
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .city-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ccc; /* Dodato za razdvajanje slike i teksta */
 }
 
 .city-card h2 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Poluprozirna pozadina za bolju čitljivost teksta */
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 10px 0; /* Prostor iznad i ispod teksta */
+  position: absolute;
+  bottom: 5.499rem; /* Pomereno gore kako bi bilo iznad opisa */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
 }
 
 .city-card p {
-    color: #333;
-    text-align: center;
-    padding: 0 20px; /* Prostor sa strane za tekst */
+  color: #333;
+  text-align: center;
+  padding: 1rem; /* Dodato više prostora za tekst */
+  background-color: #f9f9f9; /* Blago siva pozadina za bolju čitljivost */
 }

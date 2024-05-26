@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogCityComponent } from '../confirmation-dialog-city/confirmation-dialog-city.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SveMetodeService } from 'src/app/Service/sveMetode/sve-metode.service';
+import { AuthService } from 'src/app/Service/authServie/auth.service';
 
 @Component({
   selector: 'app-dodaj-grad',
@@ -10,29 +9,55 @@ import { ConfirmationDialogCityComponent } from '../confirmation-dialog-city/con
   styleUrls: ['./dodaj-grad.component.css']
 })
 export class DodajGradComponent implements OnInit {
+  cityId?: number;
   newCity = {
     name: '',
     countryId: null as number | null,
     description: '',
-    image: null as File | null,
-    additionalImages: [] as File[]
+    slikaGradaURL: '',
+    image: null as File | null
   };
   countries: any[] = [];
   errorMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router
-    ,
-    private dialog: MatDialog
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private sveMetodeService: SveMetodeService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.fetchCountries();
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    } else {
+      this.loadCountries();
+      this.route.params.subscribe(params => {
+        const id = +params['id'];   
+        if (id) {
+          this.loadCityDetails(id);
+        }
+      });
+    }
   }
 
-  fetchCountries() {
-    this.http.get<any[]>('http://localhost:8080/api/country').subscribe({
-      next: (data) => this.countries = data,
-      error: (err) => this.errorMessage = 'Failed to load countries'
+  loadCountries() {
+    this.sveMetodeService.fetchCountries().subscribe({
+      next: data => this.countries = data,
+      error: err => this.errorMessage = 'Failed to load countries: ' + err.message
+    });
+  }
+
+  loadCityDetails(cityId: number) {
+    this.sveMetodeService.getCity(cityId).subscribe({
+      next: city => {
+        this.cityId=cityId;
+        this.newCity.name = city.name;
+        this.newCity.countryId = city.country.id;
+        this.newCity.description = city.opisGrada;
+        this.newCity.slikaGradaURL = city.slikaGradaURL;
+      },
+      error: err => this.errorMessage = 'Failed to load city details: ' + err.message
     });
   }
 
@@ -41,36 +66,11 @@ export class DodajGradComponent implements OnInit {
     let files = element.files;
     if (files && files.length > 0) {
       this.newCity.image = files[0];
+      this.newCity.slikaGradaURL = '';   
     }
   }
-  onAdditionalFilesSelected(event: Event) {
-    const element = event.target as HTMLInputElement;
-    let files = element.files;
-    if (files) {
-      this.newCity.additionalImages = Array.from(files);
-    }
-  }
-  deleteCity(cityId: number, cityName: string): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogCityComponent, {
-      width: '250px',
-      data: { name: cityName }
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.http.delete(`http://localhost:8080/api/city/${cityId}`).subscribe({
-          next: () => { 
-            console.log('City deleted successfully');
-          },
-          error: (error) => { 
-            console.error('Failed to delete city:', error);
-          }
-        });
-      }
-    });
-  }
-  
- submitCity() {
+
+  submitCity() {
     const formData = new FormData();
     formData.append('name', this.newCity.name);
     formData.append('countryId', this.newCity.countryId?.toString() ?? '');
@@ -78,19 +78,24 @@ export class DodajGradComponent implements OnInit {
     if (this.newCity.image) {
       formData.append('image', this.newCity.image, this.newCity.image.name);
     }
-    this.newCity.additionalImages.forEach((file) => {
-      formData.append('additionalImages', file, file.name);
-    });
-    this.http.post('http://localhost:8080/api/city/', formData).subscribe({
-      next: () => {
-        this.router.navigate(['/drzava']);
-      },
-      error: (error) => {
-        console.error('Failed to add city', error);
-        this.errorMessage = 'Failed to add city';
+
+    if (this.cityId) {
+      formData.append('id', this.cityId.toString());
+      console.log(this.cityId+"  uhgigigb");
+      
+    } 
+    console.log(formData );
+    this.sveMetodeService.submitCity(formData).subscribe({
+      
+       next: () => this.router.navigate(['/drzava'], { queryParams: { id: this.newCity.countryId}}),
+      error: error => {
+        console.error('Failed to add or update city:', error);
+        this.errorMessage = 'Failed to add or update city: ' + error.message;
       }
-    });
+    }); 
   }
 
-
+  vratiSlike(filename: string): string {
+    return this.sveMetodeService.getImage(filename);
+  }
 }

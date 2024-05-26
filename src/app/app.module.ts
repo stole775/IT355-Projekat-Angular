@@ -25,6 +25,9 @@ import { ConfirmationDialogCityComponent } from './cities/confirmation-dialog-ci
 import { AddAccommodationComponent } from './accommodation/add-accommodation/add-accommodation.component';
 import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';  
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './Service/authServie/AuthInterceptor';
+ 
 
 @NgModule({
   declarations: [
@@ -58,7 +61,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     BrowserAnimationsModule,  
     MatDialogModule 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

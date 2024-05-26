@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/Service/authServie/auth.service';  
+import { SveMetodeService } from 'src/app/Service/sveMetode/sve-metode.service';
 
 @Component({
   selector: 'app-navbar-home',
@@ -10,16 +10,16 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class NavbarHomeComponent implements OnInit {
   countries: any[] = [];
-  isDropdownOpen = false;  // State to manage dropdown visibility
+  isDropdownOpen = false;
 
-  constructor(private http: HttpClient, private router: Router,public authService: AuthService) {}
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    private countriesService: SveMetodeService
+  ) {}
 
   ngOnInit(): void {
-    this.fetchCountries();
-  }
-
-  fetchCountries(): void {
-    this.http.get<any[]>('http://localhost:8080/api/country').subscribe({
+    this.countriesService.fetchCountries().subscribe({
       next: (data) => {
         this.countries = data;
       },
@@ -35,3 +35,4 @@ export class NavbarHomeComponent implements OnInit {
 
   
 }
+ 

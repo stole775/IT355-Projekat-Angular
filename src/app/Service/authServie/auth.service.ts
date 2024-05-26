@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,9 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     const token = this.getToken();
-    if (!token) {
-      console.log("No token found.");
+    if (!token) { 
       return false;
-    }
-    console.log("Token found:", token);
+    } 
     return !this.isTokenExpired(token);
   }
 
@@ -27,21 +26,23 @@ export class AuthService {
     try {
       const decoded: any = jwtDecode(token);
       const isExpired = (decoded.exp * 1000) < Date.now();
-      console.log("Token expiration status:", isExpired);
+      //console.log("Token expiration time:", new Date(decoded.exp * 1000).toLocaleString());
+     // console.log("Current time:", new Date().toLocaleString());
       return isExpired;
     } catch (error) {
       console.error('Token decoding failed:', error);
+      this.logout();
       return true;
     }
   }
 
-  isUserAdmin(): boolean {
+  isUserAdmin(): boolean {//ako budem imao vise rola
     const token = this.getToken();
     if (token) {
       try {
         const decoded: any = jwtDecode(token);
-        console.log(decoded);
-        return decoded.roles && decoded.roles.includes('ADMIN');
+        console.log(decoded.Role);
+        return decoded.Role && decoded.Role.includes('ADMIN');
       } catch (error) {
         console.error('Failed to decode token for admin check:', error);
         return false;
@@ -53,18 +54,30 @@ export class AuthService {
   logout(): void {
     const token = this.getToken();
     if (token) {
-      this.http.post('http://localhost:8080/auth/logout', {}, {
+      this.http.post('http://localhost:8080/auth/logout', { responseType: 'json' }, {
         headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)
       }).subscribe({
         next: () => {
           console.log("Logged out successfully.");
           localStorage.removeItem('jwtToken');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/home']);
         },
-        error: error => console.error('Logout failed:', error)
+        error: error => {console.error('Logout failed:', error)
+        localStorage.removeItem('jwtToken');}
       });
     } else {
       console.error("No token found on logout.");
     }
+  }
+
+  login(username: string, password: string): Observable<{ jwt: string }> { 
+    localStorage.removeItem('jwtToken');//bug pa mora ovde dok ne resim
+    return this.http.post<{ jwt: string }>('http://localhost:8080/auth/login', { username, password });
+  }
+
+  handleAuthentication(jwt: string): void {
+    console.log('Login successful:', jwt);
+    localStorage.setItem('jwtToken', jwt);
+    this.router.navigate(['/']);
   }
 }

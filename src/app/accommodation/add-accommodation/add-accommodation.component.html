@@ -1,19 +1,21 @@
 <app-navbar-home></app-navbar-home>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <form #accommodationForm="ngForm" (ngSubmit)="submitAccommodation()" enctype="multipart/form-data">
-    <div class="form-group" *ngIf="city">
-        <label for="city">Grad: {{ city?.name }}</label>
-    </div>
-    <div class="form-group" *ngIf="!city">
-        <p>Učitavanje podataka...</p>
-    </div>
+  <div class="form-group" *ngIf="city">
+    <label for="city">Grad: {{ city?.name }}</label>
+  </div>
+  <div class="form-group" *ngIf="!city">
+    <p>Učitavanje podataka...</p>
+  </div>
   <div class="form-group">
     <label for="name">Naziv smeštaja:</label>
     <input type="text" id="name" [(ngModel)]="newAccommodation.name" name="name" class="form-control" required>
   </div>
   <div class="form-group">
     <label for="description">Opis smeštaja:</label>
-    <textarea id="description" [(ngModel)]="newAccommodation.description" name="description" class="form-control" required></textarea>
+    <textarea id="description" [(ngModel)]="newAccommodation.description" name="description" class="form-control"
+      required></textarea>
   </div>
   <div class="form-group">
     <label for="image">Glavna slika smeštaja:</label>
@@ -21,7 +23,8 @@
   </div>
   <div class="form-group">
     <label for="priceFrom">Cena od:</label>
-    <input type="number" id="priceFrom" [(ngModel)]="newAccommodation.priceFrom" name="priceFrom" class="form-control" required>
+    <input type="number" id="priceFrom" [(ngModel)]="newAccommodation.priceFrom" name="priceFrom" class="form-control"
+      required>
   </div>
   <div class="form-group">
     <label for="available">Dostupnost:</label>
@@ -39,19 +42,23 @@
   </div>
   <div class="form-group">
     <label for="numberOfNights">Broj noći:</label>
-    <input type="number" id="numberOfNights" [(ngModel)]="newAccommodation.numberOfNights" name="numberOfNights" class="form-control" required>
+    <input type="number" id="numberOfNights" [(ngModel)]="newAccommodation.numberOfNights" name="numberOfNights"
+      class="form-control" required>
   </div>
   <div class="form-group">
     <label for="priceListImage">Slika cenovnika:</label>
-    <input type="file" id="priceListImage" (change)="onPriceListImageSelected($event)" accept="image/*" class="form-control">
-</div>
+    <input type="file" id="priceListImage" (change)="onPriceListImageSelected($event)" accept="image/*"
+      class="form-control">
+  </div>
   <div class="form-group">
     <label for="additionalImages">Dodatne slike smeštaja:</label>
-    <input type="file" id="additionalImages" (change)="selectViseSlika($event)" accept="image/*" multiple class="form-control">
+    <input type="file" id="additionalImages" (change)="selectViseSlika($event)" accept="image/*" multiple
+      class="form-control">
   </div>
   <div class="form-group">
     <label for="notIncluded">Nije uključeno:</label>
-    <textarea id="notIncluded" [(ngModel)]="newAccommodation.notIncluded" name="notIncluded" class="form-control"></textarea>
+    <textarea id="notIncluded" [(ngModel)]="newAccommodation.notIncluded" name="notIncluded"
+      class="form-control"></textarea>
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="!accommodationForm.valid">Dodaj smeštaj</button>
 </form>

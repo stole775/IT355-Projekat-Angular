@@ -16,20 +16,53 @@
     color: #333;
     line-height: 1.6;
   }
-  
+ 
+  .mapa {
+    flex-direction: column;
+    align-items: flex-start;  
+    margin-bottom: 20px;
+    align-self: flex-end;  
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-left: 5%;
+    margin-right: 5%; 
+    width: 90%;
+    height: 300px;
 
-  @media (max-width: 768px) {
+  }
+  @media (max-width: 1068px) {
     .mapa {
       flex-direction: column;
-      align-items: flex-start; /* Poravnava sadržaj sa leve strane */
+      align-items: flex-start;  
       margin-bottom: 20px;
-      align-self: flex-end; /* Poravnava mapu sa desne strane */
+      align-self: flex-end;  
       margin-top: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      width: 100%; /* Mapa zauzima punu širinu .footer-map diva */
+      margin-left: 5%;
+      margin-right: 5%; 
+      width: 90%;
       height: 300px;
 
     }
   }
-  
+
+  @media (min-width: 1568px) {
+    .mapa {
+      flex-direction: column;
+      align-items: flex-start;  
+      margin-bottom: 20px;
+      align-self: flex-end;  
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-left: 15%;
+      margin-right: 15%; 
+      width: 70%;
+      height: 400px;
+
+    }
+  }
+
+ 

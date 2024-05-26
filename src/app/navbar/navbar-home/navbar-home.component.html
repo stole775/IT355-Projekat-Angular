@@ -11,12 +11,18 @@
         <a *ngFor="let country of countries" [routerLink]="['/drzava']" [queryParams]="{id: country.id}">
           {{ country.name }}
         </a>
-         </div>
+      </div>
+    </li>
+    <li>
+      <a href="svedrzave">Cela ponuda</a>
     </li>
     <li *ngIf="!authService.isLoggedIn()">
       <a routerLink="/login">Login</a>
     </li>
-    <li *ngIf="authService.isLoggedIn() && authService.isUserAdmin()">
+    <li *ngIf="authService.isLoggedIn()">
+      <a routerLink="/admin">Admin</a>
+    </li>
+    <li *ngIf="authService.isLoggedIn() ">
       <a (click)="authService.logout()">Logout</a>
     </li>
   </ul>

@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Accommodation } from '../accommodations/Accommodation.model';
+import { Accommodation } from '../../accommodations/Accommodation.model';
 import { Injectable } from '@angular/core';
-import { City } from '../accommodations/City.model';
+import { City } from '../../accommodations/City.model';
 import { environment } from 'environment/environment';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { environment } from 'environment/environment';
 })
 export class AccommodationsService {
  
-  private baseUrl = 'http://localhost:3000'; // Bazni URL vašeg API-a
+  
 
   constructor(private http: HttpClient) {}
 

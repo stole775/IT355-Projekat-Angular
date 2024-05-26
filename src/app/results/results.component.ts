@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../search.service'; // Ažurirajte putanju prema vašem projektu
+import { SearchService } from '../Service/SearchService/search.service'; // Ažurirajte putanju prema vašem projektu
 
 @Component({
   selector: 'app-results',

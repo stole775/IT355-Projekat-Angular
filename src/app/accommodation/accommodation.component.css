@@ -78,6 +78,27 @@
     align-items: center;
   }
 
+  .button {
+    background-color: #0056b3;
+    background: linear-gradient(88.31deg,#2179d8 13.82%,#4a9df7 86.7%);
+    box-shadow: 0 4px 8px rgba(255,0,0,.18);
+    color: #fff;
+    width: 32%;
+    text-transform: capitalize;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: .75px;
+    text-align: center;
+    border-radius: 28px;
+    letter-spacing: .0892857143em;
+    justify-content: center;
+    align-items: center;
+    position: center;
+     margin-left: 33%;
+  }
 
 
 
@@ -85,9 +106,7 @@
 
 
 
-
-  .photos-grid {
-    display: flex;
+  .photos-grid { 
     flex-wrap: wrap;
     gap: 10px;
   }

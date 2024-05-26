@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'upload', component:ImageUploadComponent  },//admin
   { path: 'edit', component:AccommodationEditComponent  },//admin
   { path: 'dodaj-grad', component:DodajGradComponent  },//admin
+  { path: 'dodaj-grad/:id', component:DodajGradComponent  },//admin
   { path: 'dodajSmestaj', component:AddAccommodationComponent  },//admin
   { path: 'admin', component:AdminPanelComponent  },//admin
   { path: 'login', component:LoginComponent  },
