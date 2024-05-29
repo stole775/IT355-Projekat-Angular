@@ -32,7 +32,6 @@
 
 <div *ngIf="accommodation && accommodation.priceListImageUrl" class="destination-description">
   <h3>Cenovnik</h3>
-  <!-- Price list image -->
   <img [src]="vratiSlike(accommodation.priceListImageUrl)" alt="Cenovnik smeštaja" class="accommodation-image">
 </div>
 
@@ -44,23 +43,23 @@
 <div *ngIf="accommodation && photos.length" class="photos-grid">
   <h3>Fotografije</h3>
   <div *ngFor="let photoUrl of photos; let i = index" class="photo-container">
-    <!-- Photo gallery images -->
+
     <img [src]="vratiSlike(photoUrl)" alt="Fotografija smeštaja {{ i + 1 }}" class="photo-thumbnail"
       (click)="openModal(photoUrl)">
   </div>
 </div>
 
-<!-- Modal window for image display -->
+ 
 <div *ngIf="showModal" class="modal" (click)="closeModal()">
   <span class="close" (click)="closeModal()">&times;</span>
   <span class="prev" (click)="changeImage(-1, $event)">&#10094;</span>
   <span class="next" (click)="changeImage(1, $event)">&#10095;</span>
-  <!-- Modal content image -->
-  <img [src]="vratiSlike(accommodation.selectedImageUrl)" class="modal-content">
+ 
+  <img [src]="selectedImageUrl" class="modal-content">
   <div class="caption">{{selectedImageCaption}}</div>
 </div>
 
 <div *ngIf="accommodation && accommodation.travelPlan" class="destination-description">
   <h3>Plan i program putovanja</h3>
   <p>{{ accommodation.travelPlan }}</p>
-</div>
+</div> 

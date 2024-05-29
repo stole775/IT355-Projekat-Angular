@@ -11,6 +11,7 @@ import { DodajGradComponent } from './cities/dodaj-grad/dodaj-grad.component';
 import { AddAccommodationComponent } from './accommodation/add-accommodation/add-accommodation.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { LoginComponent } from './login/login.component';
+import { SwaggerComponent } from './swagger/swagger.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },  
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'dodajSmestaj', component:AddAccommodationComponent  },//admin
   { path: 'admin', component:AdminPanelComponent  },//admin
   { path: 'login', component:LoginComponent  },
+  { path: 'swagger', component: SwaggerComponent },
   
 ];
 

@@ -1,8 +1,7 @@
 .search-results {
-    margin: 20px;
+    margin: 20px auto;
     width: fit-content;
-    min-width: 50%;
-    
+    min-width: 50%; 
 }
   
 .search-results h3 {

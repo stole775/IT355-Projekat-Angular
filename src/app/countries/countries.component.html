@@ -2,7 +2,7 @@
 
 <div class="countries-container">
     <div *ngFor="let country of countries" class="country-card"  [routerLink]="['/drzava']" [queryParams]="{id: country.id}">
-      <img *ngIf="isAdmin()" [src]="vratiSlike(country.imageUrl)" alt="{{ country.name }}">
+      <img  [src]="vratiSlike(country.imageUrl)" alt="{{ country.name }}">
       <p>{{ country.name }}</p>
       
       <button (click)="goToDetails(country.id)">Detaljno</button>

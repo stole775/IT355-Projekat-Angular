@@ -9,6 +9,7 @@ import { AuthService } from '../Service/authServie/auth.service';
   styleUrls: ['./admin-panel.component.css']
 })
 export class AdminPanelComponent implements OnInit {
+  activeSection: string = 'password-change'; // Default section
   featuredOffers: any[] = [];
   statistics: any[] = [];
   actuatorHealth: any = {};
@@ -29,6 +30,10 @@ export class AdminPanelComponent implements OnInit {
     this.loadFeaturedOffers();
     this.loadStatistics();
     this.loadActuatorData();
+  }
+
+  setActiveSection(section: string) {
+    this.activeSection = section;
   }
 
   loadFeaturedOffers() {
@@ -64,6 +69,11 @@ export class AdminPanelComponent implements OnInit {
   goToDetails(id: number) {
     this.router.navigate(['/smestaj', id]);
   }
+  
+  goToSwagger() {
+    window.open('http://localhost:8080/swagger-ui/index.html', '_blank');
+  }
+
   user: any = {};
   confirmPassword!: string;
   updateUserInfo() {

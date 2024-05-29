@@ -38,7 +38,7 @@ export class AccommodationEditComponent implements OnInit {
             console.log(photosData);
           },
           error: (photosError) => {
-            console.error('Error loading photos:', photosError);
+            console.log('Nema pronadjenih slika:', photosError);
           }
         });
   
@@ -60,19 +60,19 @@ export class AccommodationEditComponent implements OnInit {
  
   deletePhoto(url: string): void {
     if (url  ) {  
-      console.log("Deleting photo with URL:", url);
+      console.log("Brisanje slike sa URL:", url);
       this.sveMetodeService.deletePhoto(url).subscribe({
         next: () => {  
           this.accommodation = null;
           this.ngOnInit();
-          console.log('Photo deleted successfully');
+          console.log('Slika uspesno izbrisana');
         },
         error: (error) => {
-          console.error('Failed to delete photo:', error);
+          console.error('Greska u brisanju slike:', error);
         }
       });
     } else {
-      console.log("Photo URL is invalid or null");
+      console.log("URL je nevazeci");
     }
   }
   

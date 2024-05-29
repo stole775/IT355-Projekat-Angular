@@ -106,7 +106,8 @@
 
 
 
-  .photos-grid { 
+  .photos-grid {
+    display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
@@ -140,7 +141,7 @@
   }
   
   
-  .modal-content {
+  .modal-content { 
     margin: auto;
     display: block;
     width: 80%;
@@ -168,7 +169,6 @@
     padding: 10px 0;
     height: 150px;
   }
-  /* Stilovi za strelice */
 .prev, .next {
     cursor: pointer;
     position: absolute;

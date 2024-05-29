@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';  
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Service/authServie/AuthInterceptor';
+import { SwaggerComponent } from './swagger/swagger.component';
  
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AuthInterceptor } from './Service/authServie/AuthInterceptor';
     ConfirmationDialogCityComponent,
     AddAccommodationComponent,
     LoginComponent,
-    AdminPanelComponent 
+    AdminPanelComponent,
+    SwaggerComponent 
 
   ],
   imports: [

@@ -1,3 +1,4 @@
+// accommodation.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SveMetodeService } from 'src/app/Service/sveMetode/sve-metode.service';
@@ -39,6 +40,7 @@ export class AccommodationComponent implements OnInit {
           this.photos = data;
           if (this.accommodation) {
             this.accommodation.photos = this.photos;
+            console.log(this.photos + "  evo ga");
           } else {
             console.error('Smestaj nije pronadjen');
           }
@@ -53,16 +55,18 @@ export class AccommodationComponent implements OnInit {
   checkIfAdmin() { 
     return this.auth.isLoggedIn();
   }
+
   vratiSlike(filename: string): string {
     return this.sveMetodeService.getImage(filename);
   }
+
   reserveAccommodation(id: number) {
     console.log('Rezervacija accommodation sa ID:', id); 
   }
 
   openModal(imageUrl: string) {
     this.showModal = true;
-    this.selectedImageUrl = imageUrl;
+    this.selectedImageUrl = this.vratiSlike(imageUrl); // Postavlja URL slike
     this.selectedImageIndex = this.photos.findIndex((url) => url === imageUrl);
   }
 
@@ -78,8 +82,9 @@ export class AccommodationComponent implements OnInit {
     } else if (this.selectedImageIndex < 0) {
       this.selectedImageIndex = this.photos.length - 1;
     }
-    this.selectedImageUrl = this.photos[this.selectedImageIndex];
+    this.selectedImageUrl = this.vratiSlike(this.photos[this.selectedImageIndex]);
   }
+
   editAccommodation(accommodationId: number) {
     // ide na edit stranu
     this.router.navigate(['/edit', { accommodationId: accommodationId }]);
