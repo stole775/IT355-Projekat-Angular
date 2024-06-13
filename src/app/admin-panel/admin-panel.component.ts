@@ -15,6 +15,8 @@ export class AdminPanelComponent implements OnInit {
   actuatorHealth: any = {};
   actuatorInfo: any = {};
   actuatorBeans: any = {};
+  message: string = '';
+  success: boolean = false;
 
   constructor(
     private http: HttpClient, 
@@ -80,11 +82,20 @@ export class AdminPanelComponent implements OnInit {
     if (this.user.password === this.confirmPassword) {
       this.http.put('http://localhost:8080/api/admin/update', this.user)
         .subscribe({
-          next: (response) => console.log('User updated successfully', response),
-          error: (error) => console.error('Error updating user', error)
+          next: (response) => {
+            this.message = 'Lozinka promenjena';
+            this.success = true;
+          },
+          error: (error) => {
+            this.message = 'Došlo je do greške prilikom promene lozinke.';
+            this.success = false;
+            console.error('Error updating user', error);
+          }
         });
     } else {
-      console.error('Passwords do not match');
+      this.message = 'Lozinke se ne podudaraju.';
+      this.success = false;
     }
   }
+
 }

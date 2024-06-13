@@ -1,0 +1,63 @@
+ 
+ 
+.img-responsive {
+    max-width: 20%; /* ensures the image is never wider than its container */
+    height: auto; /* maintains the aspect ratio */
+    display: auto; /* prevents inline spacing issues */
+    margin: 0 auto 10px; /* centers the image and adds space below */
+  }
+  
+  .photo-container img {
+    max-width: 30%; /* adjust this value to fit your design */
+    height: auto; /* maintains the aspect ratio */
+    display: block; /* ensures the image does not have inline properties */
+    margin-bottom: 10px; /* adds space below each image */
+  }
+  
+  .form-group{
+
+    background-color: #f8f9fa;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    margin: 0;
+  }
+
+  @media (min-width: 968px) {
+    .form-control {
+      display: block;
+      width: fit-content;
+      height: calc(1.5em + .75rem + 2px);
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #ece9e9;
+      background-clip: padding-box;
+      border: 1px solid #bcd1e6;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  }
+  }
+  @media (max-width: 968px) {
+  .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #ece9e9;
+    background-clip: padding-box;
+    border: 1px solid #bcd1e6;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+  }
+.btn-danger {
+  color: #fff;
+  background-color: #c51f1f;
+  border-color: #f1f1f1;
+}

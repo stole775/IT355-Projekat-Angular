@@ -1,22 +1,21 @@
-/* Styles for the login container */
+ 
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Use viewport height to make container full height */
-    background-color: #f4f4f4; /* Light grey background */
+    min-height: 100vh;  
+    background-color: #f4f4f4;  
 }
 
-/* General form styling */
+ 
 form {
     padding: 20px;
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    width: 300px; /* Fixed width, you can adjust it based on your preference */
-}
+    width: 300px;  }
 
-/* Style for each form group */
+ 
 .form-group {
     margin-bottom: 15px;
 }
@@ -47,4 +46,15 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+ 
+.alert.alert-danger {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    width: 300px;  
 }

@@ -8,6 +8,7 @@ import { AuthService } from '../Service/authServie/auth.service';
 })
 export class LoginComponent {
   loginData = { username: '', password: '' };
+  errorMessage: string = '';
 
   constructor(private authService: AuthService) {}
 
@@ -15,9 +16,11 @@ export class LoginComponent {
     this.authService.login(this.loginData.username, this.loginData.password).subscribe({
       next: (response) => {
         this.authService.handleAuthentication(response.jwt);
+        this.errorMessage = ''; // Clear any previous error message
       },
       error: (error) => {
         console.error('Login failed:', error);
+        this.errorMessage = 'Login neuspesan: ' + (error.error?.message || 'Pogresni kredencijali');
       }
     });
   }

@@ -98,6 +98,7 @@ export class AddAccommodationComponent implements OnInit {
         this.uploadMultipleImages();
       }
     }
+    this.router.navigate(['/smestaji'], { queryParams: { id: this.city.id}});
   }
 
   uploadSingleImage(file: File, type: number): void {

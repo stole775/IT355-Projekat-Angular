@@ -24,6 +24,10 @@
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid || user.password !== confirmPassword">Ažuriraj</button>
     </form>
+
+    <div *ngIf="message" [ngClass]="{'alert-success': success, 'alert-danger': !success}" class="alert">
+        {{ message }}
+    </div>
   </div>
 
   <div *ngIf="activeSection === 'featured-accommodations'">

@@ -1,6 +1,5 @@
 <app-navbar-home></app-navbar-home>
 
-
 <div class="login-container">
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -10,7 +9,12 @@
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" id="password" [(ngModel)]="loginData.password" name="password" class="form-control" required>
-        </div>
+        </div> <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+    </div>
         <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
-    </form>
+    
+
+   
+</form>
 </div>
