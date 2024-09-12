@@ -1,65 +1,81 @@
 <app-navbar-home></app-navbar-home>
-<button *ngIf="checkIfAdmin()" (click)="editAccommodation(accommodation.id)" class="button">Izmeni</button>
-<div *ngIf="accommodation && accommodation.name" class="accommodation-details">
+
+<div class="accommodation-details" *ngIf="accommodation && accommodation.name">
   <h2>{{ accommodation.name }}</h2>
-  <!-- Main image -->
-  <img [src]="vratiSlike(accommodation.imageUrl)" alt="{{ accommodation.name }}">
+
+  <!-- Glavna slika smeštaja -->
+  <img [src]="vratiSlike(accommodation.imageUrl)" alt="{{ accommodation.name }}" class="accommodation-image">
+
   <p><strong>Grad:</strong> {{ accommodation.city.name }}</p>
-  <p><strong>Cena od:</strong> {{ accommodation.priceFrom | currency:'EUR':'symbol-narrow' }}</p>
-  <p><strong>Broj noći:</strong> {{ accommodation.numberOfNights }}</p>
+  
+  <!-- Prikaz cene samo ako je dostupna -->
+  <p *ngIf="accommodation.priceFrom != 0"><strong>Cena od:</strong> {{ accommodation.priceFrom | currency:'EUR':'symbol-narrow' }}</p>
+  
+  <!-- Prikaz broja noći -->
+  <p *ngIf="accommodation.numberOfNights != 0"><strong>Broj noći:</strong> {{ accommodation.numberOfNights }}</p>
+
+  <!-- Dostupnost smeštaja -->
   <p>
-    <strong>Dostupnost:</strong>
+    <strong>Dostupnost:</strong> 
     <span [ngClass]="{'available': accommodation.available, 'not-available': !accommodation.available}">
       {{ accommodation.available ? 'Dostupno' : 'Nije dostupno' }}
     </span>
   </p>
+
+  <!-- Opis smeštaja -->
   <p>{{ accommodation.description }}</p>
-  <button *ngIf="accommodation.available" (click)="reserveAccommodation(accommodation.id)" class="reserve-button">
-    Rezerviši
-  </button>
-  <a href="tel:123-456-7890">
-    <button style="margin-left: 5px;" *ngIf="accommodation.available" (click)="reserveAccommodation(accommodation.id)"
-      class="reserve-button">
-      Pozovi
+
+  <!-- Rezerviši i Pozovi dugmad -->
+  <div class="buttons-container">
+    <button *ngIf="accommodation.available" (click)="reserveAccommodation(accommodation.id)" class="reserve-button">
+      Rezerviši
     </button>
-  </a>
+    <a href="tel:123-456-7890">
+      <button style="margin-left: 5px;" *ngIf="accommodation.available" class="call-button">
+        Pozovi
+      </button>
+    </a>
+  </div>
 </div>
 
-<div *ngIf="accommodation && accommodation.opisGrada" class="destination-description">
+<!-- Opis destinacije -->
+<div class="destination-description" *ngIf="accommodation && accommodation.opisGrada">
   <h3>Opis Destinacije</h3>
   <p>{{ accommodation.opisGrada }}</p>
 </div>
 
-<div *ngIf="accommodation && accommodation.priceListImageUrl" class="destination-description">
+<!-- Cenovnik -->
+<div class="destination-description" *ngIf="accommodation && accommodation.priceListImageUrl">
   <h3>Cenovnik</h3>
   <img [src]="vratiSlike(accommodation.priceListImageUrl)" alt="Cenovnik smeštaja" class="accommodation-image">
 </div>
 
-<div *ngIf="accommodation && accommodation.notIncluded" class="destination-description">
+<!-- Cena aranžmana ne uključuje -->
+<div class="destination-description" *ngIf="accommodation && accommodation.notIncluded">
   <h3>Cena aranžmana ne uključuje</h3>
-  {{ accommodation.notIncluded }}
+  <p>{{ accommodation.notIncluded }}</p>
 </div>
 
-<div *ngIf="accommodation && photos.length" class="photos-grid">
+<!-- Fotografije smeštaja -->
+<div class="photos-grid" *ngIf="accommodation && photos.length">
   <h3>Fotografije</h3>
   <div *ngFor="let photoUrl of photos; let i = index" class="photo-container">
-
-    <img [src]="vratiSlike(photoUrl)" alt="Fotografija smeštaja {{ i + 1 }}" class="photo-thumbnail"
-      (click)="openModal(photoUrl)">
+    <img [src]="vratiSlike(photoUrl)" alt="Fotografija smeštaja {{ i + 1 }}" class="photo-thumbnail" (click)="openModal(photoUrl)">
   </div>
 </div>
 
- 
+<!-- Modal za prikaz slike -->
 <div *ngIf="showModal" class="modal" (click)="closeModal()">
   <span class="close" (click)="closeModal()">&times;</span>
   <span class="prev" (click)="changeImage(-1, $event)">&#10094;</span>
   <span class="next" (click)="changeImage(1, $event)">&#10095;</span>
- 
+
   <img [src]="selectedImageUrl" class="modal-content">
-  <div class="caption">{{selectedImageCaption}}</div>
+  <div class="caption">{{ selectedImageCaption }}</div>
 </div>
 
-<div *ngIf="accommodation && accommodation.travelPlan" class="destination-description">
+<!-- Plan i program putovanja -->
+<div class="destination-description" *ngIf="accommodation && accommodation.travelPlan">
   <h3>Plan i program putovanja</h3>
   <p>{{ accommodation.travelPlan }}</p>
-</div> 
+</div>

@@ -11,6 +11,20 @@
   gap: 20px;
 }
 
+p {
+  font-family: 'Poppins', sans-serif; /* Elegantan i moderan font */
+  font-size: 0.9rem; /* Udobna veličina teksta */
+  line-height: 1.6; /* Prostor između redova za bolju čitljivost */
+  color: #333; /* Tamno siva boja za bolji kontrast */
+  margin-bottom: 20px; /* Prostor ispod svakog paragrafa */
+  text-align: right; /* Tekst poravnat sa obe strane za profesionalniji izgled */
+  padding: 7px; /* Dodatni prostor unutar paragrafa */
+  background-color: #f8f9fa; /* Svetla pozadina za blagi kontrast */ 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Blaga senka za 3D efekat */
+  border-radius: 4px; /* Zaobljeni uglovi za mekši izgled */
+}
+
+
 .smestaj-card {
   flex: 1 1 300px;
   display: flex;
@@ -121,7 +135,7 @@
   bottom: 5.499rem;  
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(32, 30, 30, 0.5);
   color: white;
   text-align: center;
   margin: 0;
@@ -133,4 +147,27 @@
   text-align: center;
   padding: 1rem;  
   background-color: #f9f9f9;  
+}
+
+@media (max-width: 581px) {
+.city-card h2 {
+  position: absolute;
+  bottom: 8.099rem;  
+  left: 0;
+  width: 100%;
+  background-color: rgba(56, 52, 52, 0.5);
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
+}
+}
+
+@media (max-width: 451px) {
+.dugmici {
+ max-width: 350px;
+ max-height: 65px;
+ position: inherit;
+ display: flex;
+}
 }

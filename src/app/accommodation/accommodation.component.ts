@@ -32,7 +32,7 @@ export class AccommodationComponent implements OnInit {
         .getAccommodation(+accommodationId)
         .subscribe((data) => {
           this.accommodation = data;
-          console.log(data);
+          //console.log(data);
         });
 
       this.sveMetodeService.getAccommodationPhotos(+accommodationId).subscribe(
@@ -40,13 +40,13 @@ export class AccommodationComponent implements OnInit {
           this.photos = data;
           if (this.accommodation) {
             this.accommodation.photos = this.photos;
-            console.log(this.photos + "  evo ga");
+           // console.log(this.photos + "  evo ga");
           } else {
             console.error('Smestaj nije pronadjen');
           }
         },
         (error) => {
-          console.log('Nema slika:', error);
+         // console.log('Nema slika:', error);
         }
       );
     }
@@ -61,7 +61,7 @@ export class AccommodationComponent implements OnInit {
   }
 
   reserveAccommodation(id: number) {
-    console.log('Rezervacija accommodation sa ID:', id); 
+    //console.log('Rezervacija accommodation sa ID:', id); 
   }
 
   openModal(imageUrl: string) {

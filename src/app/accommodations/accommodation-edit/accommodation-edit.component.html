@@ -25,12 +25,14 @@
   <div class="form-group">
     <label for="image">Main Image:</label>
     <input type="file" id="image" (change)="onMainImageSelected($event)" accept="image/*" class="form-control">
+    <br>
     <img *ngIf="accommodation.imageUrl" [src]="vratiSlike(accommodation.imageUrl)" class="img-fluid" alt="Main Image">
     <button *ngIf="isAdmin" type="button" class="btn btn-danger" (click)="clearImage(1)">Delete Main Image</button>
   </div>
   <div class="form-group">
     <label for="priceListImage">Price List Image:</label>
     <input type="file" id="priceListImage" (change)="onPriceListImageSelected($event)" accept="image/*" class="form-control">
+    <br>
     <img *ngIf="accommodation.priceListImageUrl" [src]="vratiSlike(accommodation.priceListImageUrl)" class="img-fluid">
     <button *ngIf="isAdmin" type="button" class="btn btn-danger" (click)="clearImage(2)">Delete Price List Image</button>
   </div>

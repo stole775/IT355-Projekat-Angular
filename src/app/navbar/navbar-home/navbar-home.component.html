@@ -4,17 +4,17 @@
   </div>
   <ul class="nav-links">
     <li><a href="#">Pocetna</a></li>
-    <li class="dropdown" (click)="toggleDropdown()" (mouseleave)="isDropdownOpen = false">
+   <!--  <li class="dropdown" (click)="toggleDropdown()" (mouseleave)="isDropdownOpen = false">
       <a>Zemlje</a>
       <div class="dropdown-content" [class.show]="isDropdownOpen">
-        <!-- Use routerLink for navigation -->
+          
         <a *ngFor="let country of countries" [routerLink]="['/drzava']" [queryParams]="{id: country.id}">
           {{ country.name }}
         </a>
       </div>
-    </li>
+    </li>-->
     <li>
-      <a href="svedrzave">Cela ponuda</a>
+      <a href="svedrzave">Drzave</a>
     </li>
     <li *ngIf="!authService.isLoggedIn()">
       <a routerLink="/login">Login</a>

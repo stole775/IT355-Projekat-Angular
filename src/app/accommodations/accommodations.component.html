@@ -1,4 +1,7 @@
 <app-navbar-home></app-navbar-home>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 
 <div class="city-container">
   <div *ngIf="city" class="city-container">
@@ -20,9 +23,9 @@
   <div *ngFor="let smestaj of accommodations" class="smestaj-card">
     <img [src]="vratiSlike(smestaj.imageUrl)" alt="{{ smestaj.name }}" />
     <p>{{ smestaj.name }}</p>
-    <p *ngIf="smestaj.description">{{ smestaj.description }}</p>
-    <p *ngIf="smestaj.priceFrom">Cena od: {{ smestaj.priceFrom }}€</p>
-    <p *ngIf="smestaj.numberOfNights">
+    <p *ngIf="smestaj.description!=''">{{ smestaj.description }}</p>
+    <p *ngIf="smestaj.priceFrom!=0">Cena od: {{ smestaj.priceFrom }}€</p>
+    <p *ngIf="smestaj.numberOfNights!=0">
       Broj noći: {{ smestaj.numberOfNights }}
     </p>
     <p *ngIf="smestaj.available">
@@ -31,12 +34,12 @@
     <p *ngIf="smestaj.notIncluded">Nije uključeno: {{ smestaj.notIncluded }}</p>
     <button (click)="goToDetails(smestaj.id)">Detaljno</button>
     <!-- Admin Controls -->
-    <div *ngIf="isAdmin">
+    <div *ngIf="isAdmin" class="dugmici">
       <button (click)="editAccommodation(smestaj.id)">Uredi</button>
       <button (click)="deleteAccommodation(smestaj.id, smestaj.name)">
         Obriši
       </button>
-      <button (click)="openImageUpload(smestaj.id)">Dodaj slike</button>
+      <button (click)="openImageUpload(smestaj.id)">Dodajslike</button>
     </div>
   </div>
 </div>

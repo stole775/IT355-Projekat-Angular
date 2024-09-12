@@ -1,29 +1,27 @@
-# Koristimo zvanični image Node.js kao bazni image
-FROM node:20.9.0 AS build
+# Step 1: Use the official Node.js image to run the Angular app
+FROM node:16
 
-# Postavljamo radni direktorijum u kontejneru
-WORKDIR /usr/src/app
+# Step 2: Set the working directory
+WORKDIR /app
 
-# Kopiramo package.json i package-lock.json u radni direktorijum
-COPY ../../package*.json ./
+# Step 3: Copy the package.json and package-lock.json
+COPY package.json package-lock.json ./
 
-# Instaliramo zavisnosti
+# Step 4: Install dependencies
 RUN npm install
 
-# Kopiramo ceo projekat u radni direktorijum
+# Step 5: Copy the rest of the application files
 COPY . .
 
-# Izvršavamo komandu za build Angular aplikacije
-RUN npm run build --prod
+# Step 6: Expose port 4200 (used by ng serve)
+EXPOSE 4200
 
-# Drugi build stage
-FROM nginx:alpine
+# Step 7: Start the Angular app using ng serve for development
+CMD ["npm", "run", "start", "--", "--host", "0.0.0.0", "--disable-host-check"]
 
-# Kopiramo izgrađenu aplikaciju iz prethodnog build stage-a u nginx folder za hosting
-COPY --from=build /usr/src/app/dist/ /usr/share/nginx/html/
 
-# EXPOSE komanda definiše na kom portu će aplikacija biti dostupna u kontejneru
-EXPOSE 80
+# docker build -t angular .
 
-# CMD komanda definiše komandu koja će se pokrenuti kada se kontejner pokrene
-CMD ["nginx", "-g", "daemon off;"]
+# docker run -p 4200:80 angular
+
+#ng serve --host 0.0.0.0 --disable-host-check

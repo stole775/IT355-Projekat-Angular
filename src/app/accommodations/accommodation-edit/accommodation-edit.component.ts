@@ -30,21 +30,21 @@ export class AccommodationEditComponent implements OnInit {
       next: (accommodationData) => {
         this.accommodation = accommodationData;
         this.getCity(this.accommodation.city.id);  
-        console.log(accommodationData + ' init');
+       // console.log(accommodationData + ' init');
    
         this.sveMetodeService.getAccommodationPhotos(+accommodationId).subscribe({
           next: (photosData) => {
             this.accommodation.photos = photosData || []; 
-            console.log(photosData);
+          //  console.log(photosData);
           },
           error: (photosError) => {
-            console.log('Nema pronadjenih slika:', photosError);
+          //  console.log('Nema pronadjenih slika:', photosError);
           }
         });
   
       },
       error: (error) => {
-        console.log('Nema slika:', error);
+       // console.log('Nema slika:', error);
         this.router.navigate(['/home']);  
       }
     });
@@ -60,19 +60,19 @@ export class AccommodationEditComponent implements OnInit {
  
   deletePhoto(url: string): void {
     if (url  ) {  
-      console.log("Brisanje slike sa URL:", url);
+      //console.log("Brisanje slike sa URL:", url);
       this.sveMetodeService.deletePhoto(url).subscribe({
         next: () => {  
           this.accommodation = null;
           this.ngOnInit();
-          console.log('Slika uspesno izbrisana');
+         // console.log('Slika uspesno izbrisana');
         },
         error: (error) => {
-          console.error('Greska u brisanju slike:', error);
+         // console.error('Greska u brisanju slike:', error);
         }
       });
     } else {
-      console.log("URL je nevazeci");
+     // console.log("URL je nevazeci");
     }
   }
   
@@ -164,10 +164,10 @@ export class AccommodationEditComponent implements OnInit {
   uploadMultipleImages(): void {
     this.sveMetodeService.uploadMultipleImages(this.selectedFiles, this.accommodation.accommodationId!).subscribe({
       next: response => {
-        console.log('Multiple images uploaded successfully');
+        //console.log('Multiple images uploaded successfully');
           },
       error: err => {
-        console.error('Failed to upload multiple images:', err);
+       // console.error('Failed to upload multiple images:', err);
         this.errorMessage = 'Failed to upload multiple images: ' + err.message;
       }
     });
@@ -176,10 +176,10 @@ export class AccommodationEditComponent implements OnInit {
   uploadAccommodationImage(imageUrl: string, type: number): void {
     this.sveMetodeService.uploadAccommodationImage(imageUrl, type, this.accommodation.accommodationId!).subscribe({
       next: response => {
-        console.log('Accommodation image uploaded successfully:', response);
+       // console.log('Accommodation image uploaded successfully:', response);
       },
       error: err => {
-        console.error('Failed to upload accommodation image:', err);
+       // console.error('Failed to upload accommodation image:', err);
         this.errorMessage = 'Failed to upload accommodation image: ' + err.message;
       }
     });
@@ -206,7 +206,7 @@ export class AccommodationEditComponent implements OnInit {
   clearImage(type: number): void {
     this.sveMetodeService.removeAccommodationImage(this.id, type).subscribe({
       next: () => {
-        console.log(`Image type ${type} URL set to null in database successfully`);
+       // console.log(`Image type ${type} URL set to null in database successfully`);
         this.ngOnInit();   
       },
       error: (error) => {

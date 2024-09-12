@@ -3,13 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { City } from '../../accommodations/City.model';
 
+import { environment } from 'src/environment/environment'; 
+
 @Injectable({
   providedIn: 'root'
 })
 export class SveMetodeService {
  
 
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = `${environment.apiUrl}`;
+  
 
   constructor(private http: HttpClient) { }
 

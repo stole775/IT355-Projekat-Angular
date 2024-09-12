@@ -15,7 +15,7 @@
   }
   
   .form-group{
-
+    border: 1px solid #d7dadd ;
     background-color: #f8f9fa;
     color: rgb(0, 0, 0);
     padding: 20px;

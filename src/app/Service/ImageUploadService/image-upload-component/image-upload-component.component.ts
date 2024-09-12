@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ImageUploadService } from '../image-upload-service.service';
 import { Router } from '@angular/router';
-import { environment } from 'environment/environment';
+import { environment } from 'src/environment/environment';
 import { AuthService } from 'src/app/Service/authServie/auth.service';
 
 @Component({

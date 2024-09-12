@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SveMetodeService } from '../Service/sveMetode/sve-metode.service';
+import { AuthService } from '../Service/authServie/auth.service';
 
 @Component({
   selector: 'app-featured-offers-component',
@@ -12,10 +13,15 @@ export class FeaturedOffersComponent implements OnInit {
 
   constructor(
     private accommodationService: SveMetodeService,
-    private router: Router
+    private router: Router,
+    private authservice: AuthService
   ) {}
-
+   
   ngOnInit() {
+    const token = this.authservice.getToken();
+    if(token){
+    this.authservice.isTokenExpired(token);}
+
     this.accommodationService.getFeaturedOffers().subscribe({
       next: (data) => {
         this.featuredOffers = data;
